@@ -5,7 +5,7 @@ pipeline
     environment 
     {
         DOCKER_CREDENTIALS = credentials('dockerhostid') 
-        IMAGE_NAME = 'ganesh021/Web-App'
+        IMAGE_NAME = 'ganesh021/webapp'
     }
 
     stages
