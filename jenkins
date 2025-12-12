@@ -15,7 +15,7 @@ pipeline
             steps
             {
 
-                git branch: "main", url : "https://github.com/Ganesh-Kalyanshetti/Devops-Class.git"
+                git branch: "main", url : "https://github.com/Ganesh-Kalyanshetti/Devops-git.git"
                 // credentials id :'dockerhostid'
 
             }
