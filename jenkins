@@ -1,0 +1,47 @@
+pipeline
+{
+    agent any
+
+    environment 
+    {
+        DOCKER_CREDENTIALS = credentials('dockerhostid') 
+        IMAGE_NAME = 'Ganesh/Web-App'
+    }
+
+    stages
+    {
+        stage('link')
+        {
+            steps
+            {
+
+                git branch: "main", url : "https://github.com/Ganesh-Kalyanshetti/Devops-Class.git"
+                // credentials id :'dockerhostid'
+
+            }
+
+        }
+        stage('building docker')
+        {
+            steps
+            {
+                script{
+                    dockerImage = docker.build("${IMAGE_NAME}:latest")
+                }
+            }
+        }
+        stage('push tp docker')
+        {
+            steps{
+                script{
+                    docker.withRegistry('https://index.docker.io/v1/','dockerhostid')
+                    {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+
+    }
+
+}
